@@ -1,4 +1,0 @@
-    background-repeat: no-repeat;
-    background-color: #000;
-    background-position: center;
-    background-attachment: fixed;

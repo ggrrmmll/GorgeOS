@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas Test</title>
+</head>
+<body style="background-color:#212121; padding:0; margin:0;">
+    <canvas id="myCanvas"></canvas>
+    <img src="./background2.jpg" style="display:none;" id="image">
+    <script>
+        var canvas = document.querySelector("canvas");
+        var c = canvas.getContext("2d");
+        var background_source = document.getElementById("image");
+
+        window.addEventListener("mousemove", update)
+
+        function update() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        /* function draw() {
+            requestAnimationFrame(draw);
+            c.clearRect(0, 0, canvas.width, canvas.height);
+            c.drawImage(background_source, 0, 0, canvas.width, canvas.height)
+        } */
+        
+        function draw2() {
+            requestAnimationFrame(draw2);
+            c.clearRect(0, 0, canvas.width, canvas.height);
+            c.drawImage(background_source, (canvas.width / 2) - (background_source.width / 2), (canvas.height / 2) - (background_source.height / 2), background_source.width, background_source.height)
+        }
+
+        update();
+        //draw();
+        draw2();
+        
+    </script>
+</body>
+</html>

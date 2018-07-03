@@ -1,0 +1,23 @@
+var windowToCreate =  {
+    title:undefined,        // Title
+    content:undefined,      // Content
+    height:undefined,       // Window Height
+    width:undefined,        // Window Width
+    background:undefined    // Initial background
+}
+windowVar = new Window({className: gos.var.windowTheme, blurClassName: gos.var.windowThemeBlur, title: windowToCreate.title, width:windowToCreate.width, height:windowToCreate.height, destroyOnClose: true, recenterAuto:false});
+
+var winTitle = windowVar.getTitle()
+var element = document.createElement("a");
+element.className = "gos_dock_icon";
+element.style.display = "inline-block";
+element.setAttribute("id", "taskbarWindow_" + windowVar.getId())
+element.win = windowVar;
+$('gos_dock_windows').appendChild(element);
+//Event.observe(element, "mouseup", gos.functions.toggleMinState(windowVar));
+windowVar.element.style.background = windowToCreate.background
+element.setAttribute("href", "javascript:gos.functions.toggleMinState(document.getElementById('taskbarWindow_" + windowVar.getId() + "').win);")
+$(element).update(winTitle);
+
+windowVar.getContent().update(windowToCreate.content);
+windowVar.showCenter();

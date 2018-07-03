@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML Test</title>
+    <style>
+        * {cursor:none;margin:0;padding:0;}
+        .info {
+            position:fixed;
+            left:1%;
+            bottom:1%;
+            color:#eee;
+            font-family: monospace;
+            font-size:15px;
+        }
+        .info > * {
+            display:inline-block;
+            height:18px;
+        }
+        .info > img {
+            margin-right: 5px;
+            height: 11px;
+        }
+    </style>
+    <script>
+        var functionz = function () {
+            
+        }
+    </script>
+</head>
+<body style="background-image:none;background-repeat: no-repeat;background-color: #000;background-position: center;background-attachment: fixed;">
+    <div class="info" id="info"><img src="ajax-loader.gif"><p class="infoP">GOS CORE IS NOW LOADING PLEASE STAND BY.</p></div>
+    <script>
+        document.body.style.backgroundImage = "";
+        document.getElementById("info").style.display = "none";
+        var penis = setTimeout(function(){
+            document.body.style.backgroundImage = "url('wallpaper2.gif')";
+            var penguin = setTimeout(function(){
+                document.body.style.backgroundImage = "url('wallpaper3.gif')";
+                document.getElementById("info").style.display = "inherit";
+                
+            }, 2000)
+        },2000)
+    </script>
+</body>
+</html>

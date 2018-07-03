@@ -1,0 +1,20 @@
+.gos_dock_icon:hover {
+    background: #fff;
+    color: #000;
+}
+
+.gos_dock_icon {
+    max-width: 150px;
+    min-width: 100px;
+    height: 17px;
+    margin: 0;
+    font-family: sans-serif;
+    background: transparent;
+    border: transparent solid 1px;
+    color: #dadada;
+    border-bottom: #fff solid 1px;
+    font-size: 14px;
+    overflow: hidden;
+    display: inline-block;
+    text-decoration: none;
+}

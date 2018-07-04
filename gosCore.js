@@ -494,8 +494,30 @@ var gos = {
       }*/
     }
   },
-  postNotif: function () {
+  postNotif: function (title, description, onclick) {
     // Crateate a Notification and add it to the list
+    var notifWrapper = document.createElement("button");
+    var notifWrapper_h2 = document.createElement("h2");
+    var notifWrapper_p = document.createElement("p");
+    notifWrapper_h2.innerText = title;
+    notifWrapper_p.innerText = description;
+    if (onclick !== undefined) {
+      notifWrapper.onclick = "gos.functions.toggleTaskbarMenu(1); " + onclick;
+    }
+    notifWrapper.appendChild(notifWrapper_h2);
+    notifWrapper.appendChild(notifWrapper_p);
+    
+    var elements = document.getElementsByClassName("gos_list_notifList");
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].appendChild(notifWrapper);
+    }
+
+  },
+  clearNotif: function () {
+    var elements = document.getElementsByClassName("gos_list_notifList");
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].innerHTML = "";
+    }
   },
   updateIsOnMenu: function (code) {gos.var.isOnMenu = code},
   updateMenuState: function () {

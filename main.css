@@ -382,18 +382,32 @@ input:active {
 }
 
 .gos_list_appList > button {
-  padding: 7px;
+  padding: 2px 5px;
   margin: 0;
   width: 100%;
   text-align: left;
-  height: 60px;
-  overflow:hidden;
+  overflow: hidden;
+  transition: height 0.25s;
+  height:21px;
 }
 
 .gos_list_appList > button > p, .gos_list_appList > button > h2 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 12px;
+}
+
+.gos_list_appList>button:hover{
+  height:36px;
+}
+
+.gos_list_appList>button:hover>p{
+  display:block;
+}
+
+.gos_list_appList>button>p {
+  display:none;
 }
 
 .gos_dock_menuStartDiv_page {

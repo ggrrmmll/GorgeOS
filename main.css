@@ -450,7 +450,7 @@ input:active {
   padding-left: 10px;
 }
 
-.gos_dock_menuStartDiv_page0_recentListAppWrapper {
+/*.gos_dock_menuStartDiv_page0_recentListAppWrapper {
   padding: 5px 15px;
 }
 
@@ -529,6 +529,125 @@ input:active {
 
 .gos_dock_menuStartDiv_page0_favouriteListAppWrapper_gridWrapper > .gos_dock_menuStartDiv_page0_favouriteListAppWrapper_gridItem:first-child>div:not(:first-child):hover>img {
   filter: none;
+}*/
+
+.gos_dock_menuStartDiv_page0_mainList {
+  height: calc(100% - 105px);
+}
+
+.gos_dock_menuStartDiv_page0_mainList_appList {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  height: calc(100% - 105px);
+}
+
+.gos_dock_menuStartDiv_page0_mainList_appList > button, 
+.gos_dock_menuStartDiv_page0_mainList_appList > div:first-child {
+  height: 21px;
+  overflow: hidden;
+  width:100%;
+}
+
+.gos_dock_menuStartDiv_page0_mainList_appList>div:first-child {
+  background: rgba(20, 20, 20, 0.2);
+  border: 1px solid rgba(20, 20, 20, 0.2);
+  color: #eee;
+  padding: 0 2px;
+  outline: none;
+  transition:height 0.5s, background 0.25s;
+}
+
+.gos_dock_menuStartDiv_page0_mainList_appList>div:first-child:hover {
+  background: #eee;
+  color: #0e0e0e;
+  border: 1px solid #ddd;
+  height:98px;
+}
+
+.gos_dock_menuStartDiv_page0_mainList_appList > div:first-child > div {
+  display: grid;
+  grid-template-rows: 21px;
+  grid-template-columns: 21px auto;
+}
+
+.gos_dock_menuStartDiv_page0_mainList_appList>div:first-child:hover>div>img {
+  filter: invert(0%);
+}
+
+.gos_dock_menuStartDiv_page0_mainList_appList > div:first-child > div > img {
+  filter: invert(100%);
+  width: 19px;
+}
+
+.gos_dock_menuStartDiv_page0_mainList_appList > div:first-child > .gos_list_recentAppList {
+  display: none;
+}
+
+.gos_dock_menuStartDiv_page0_mainList_appList > div:first-child:hover > .gos_list_recentAppList {
+  display: block;
+  width:unset;
+}
+
+.gos_dock_menuStartDiv_page0_mainList_appList > div:first-child > div > h2 {
+  text-align: left;
+  font-size: 15px;
+  font-weight: normal;
+  margin-left: 5px;
+}
+
+.gos_dock_menuStartDiv_page0_mainList_appList > div:first-child > .gos_list_recentAppList > button {
+    background:none;
+    border:1px solid transparent;
+    color:#0c0c0c;
+    margin:0;
+    height:18px;
+    overflow:hidden;
+    width:calc(100% - 20px);
+    margin-left:10px;
+}
+
+.gos_dock_menuStartDiv_page0_mainList_appList > div:first-child > .gos_list_recentAppList > button:hover {
+  background:hsla(0, 0%, 12%, 0.65);
+  border: 1px solid #191919;
+  color: #fff;
+}
+
+
+.gos_dock_menuStartDiv_page0_mainList_appList > div:first-child > .gos_list_recentAppList > button:active {
+  background:hsla(0, 0%, 77%, 0.65);
+  border: 1px solid #9a9595;
+  color: #000;
+}
+
+.gos_dock_menuStartDiv_page0_mainList_appList > div:first-child > .gos_list_recentAppList > button > h2 {
+    font-size:12px;
+    font-weight:normal;
+    text-align:left;
+}
+
+.gos_dock_menuStartDiv_page0_mainList_recentList {
+  background: #0c0c0c;
+  height: calc(100% - 130px);
+  padding: 10px 2px;
+  width: 200px;
+  margin-left: calc(100% - 212px);
+  box-shadow: 0px 1px 2px #0c0c0c;
+  position: absolute;
+}
+
+.gos_dock_menuStartDiv_page0_mainList_recentList > .gos_list_recentAppList {
+  height: calc(100% - 20px);
+}
+
+.gos_dock_menuStartDiv_page0_mainList_recentList > .gos_list_recentAppList > button {
+  width:100%;
+}
+
+.gos_dock_menuStartDiv_page0_mainList_recentList > .gos_list_recentAppList > button > h2 {
+  font-size: 12px;
+  text-align: left;
+  font-weight: normal;
 }
 
 #gos_dock_menu_1 {

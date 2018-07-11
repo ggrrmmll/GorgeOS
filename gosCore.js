@@ -441,10 +441,45 @@ var gos = {
     }
   }
 
+    // Page0 mainList updater
+    var appLists = document.getElementsByClassName("gos_dock_menuStartDiv_page0_mainList_appList");
+
+    for (var i = 0; i < appLists.length; i++) {
+      appLists[i].innerHTML = "";
+
+      var mainButton = document.createElement("div");
+      var mainButton_H2 = document.createElement("h2");
+      var mainButton_IMG = document.createElement("img");
+      var mainButton_DIV = document.createElement("div");
+      var mainButton_LIST = document.createElement("div");
+
+      mainButton_H2.innerText = "Recently used applications";
+      mainButton_IMG.src = "./icons/icons8-reloj-32.png"
+      mainButton_LIST.setAttribute("class", "gos_list_recentAppList")
+
+      mainButton_DIV.appendChild(mainButton_IMG);
+      mainButton_DIV.appendChild(mainButton_H2);
+      mainButton.appendChild(mainButton_DIV);
+      mainButton.appendChild(mainButton_LIST);
+      appLists[i].appendChild(mainButton);
+
+      for (var ii = 0; ii < gos.var.favouriteApps.length; ii++) {
+
+        var mainButton = document.createElement("button");
+        var mainButton_H2 = document.createElement("h2");
+        var appName = gos.var.favouriteApps[ii].name;
+
+        mainButton_H2.innerText = appName;
+        mainButton.setAttribute("onclick", "gos.functions.toggleTaskbarMenu(0); gos.app.functions.launchApp(gos.var.favouriteApps[" + ii + "]  );")
+
+        mainButton.appendChild(mainButton_H2);
+        appLists[i].appendChild(mainButton);
+      }
+    }
+
 
   // Recent App List
 
-    // Application list
     var appLists = document.getElementsByClassName("gos_list_recentAppList");
 
     for (var i = 0; i < appLists.length; i++) {
@@ -475,6 +510,8 @@ var gos = {
         appLists[i].appendChild(mainButton);
       }
     }
+
+  
 
   },
   toggleStartMenuPage: function () {
@@ -775,7 +812,7 @@ var gos = {
   gos.functions.createWindow("GeorgeSystems Debugger Software", 600, 200, "<div id='gos_debug' style='background:#000;color:#fff;font-family:monospace;padding:4px;'>SUP I AM THE GORGEOSDEBUGSHIT</div></br><div style='background: white; padding: 10px;'><button class='gos_white'>Button #1</button></div></br><div style='background: black; padding: 10px;'><button >Button #2</button></div></br><button class='unstyled'>Button #3</button><button>HOLA MI NOMBRE ES VINCE CON SLAPCHOP. </button>", "#607d8b")
   gos.var.runtime = setInterval(this.runtime, 100);
 }, var:{
-  litsenForMenu:undefined, isOnMenu:undefined, mouse:{x:undefined, y:undefined}, menu:{minX:undefined, maxX:undefined, minY:undefined, maxY:undefined}, runtime:undefined, clock:undefined, clockFix:{hours:undefined, minutes:undefined, seconds:undefined}, windowTheme:"mac_os_x", windowThemeBlur:"blur_os_x", isLoggedIn:undefined, updaterLogin:undefined, animateCanvas:false, canvasAnimation:0, startMenuPage:0, recentApps:[], autoLogin:true, notifList:[]
+  litsenForMenu: undefined, isOnMenu: undefined, mouse: { x: undefined, y: undefined }, menu: { minX: undefined, maxX: undefined, minY: undefined, maxY: undefined }, runtime: undefined, clock: undefined, clockFix: { hours: undefined, minutes: undefined, seconds: undefined }, windowTheme: "mac_os_x", windowThemeBlur: "blur_os_x", isLoggedIn: undefined, updaterLogin: undefined, animateCanvas: false, canvasAnimation: 0, startMenuPage: 0, recentApps: [], favouriteApps: [], autoLogin:true, notifList:[]
 }}
 
 

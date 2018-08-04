@@ -80,6 +80,7 @@ var gos = {
           }
         }, */
         launchApp: function (app, cliOut) {
+          
           // Check if all required factors are specifyed in app.
           if (app.name !== undefined && app.requireDebug !== undefined && app.openWindow !== undefined && app.onRun !== undefined) {console.log("Valid application, now launching.")
 
@@ -121,8 +122,9 @@ var gos = {
           } else {
             console.log("Coudn't launch the app.")
           }
-        }
+        
       }
+    }
 }, functions:{
   updateMouseInfo: function(currentMouseX, currentMouseY) {
     gos.var.mouse.x = currentMouseX;
@@ -370,7 +372,7 @@ var gos = {
   updateStartMenu: function () {
 
     // App List
-    if (gos.debug == true) {
+  if (gos.debug) {
     // Application list
     var appLists = document.getElementsByClassName("gos_list_appList");
     console.log("asdfasdfadsf")
@@ -383,7 +385,7 @@ var gos = {
 
         
         console.log("afd2")
-        var mainButton = document.createElement("button");
+        /*var mainButton = document.createElement("button");
         var mainButton_H2 = document.createElement("h2");
         var mainButton_p = document.createElement("p");
 
@@ -396,7 +398,55 @@ var gos = {
 
         mainButton.appendChild(mainButton_H2);
         mainButton.appendChild(mainButton_p);
-        appLists[i].appendChild(mainButton);
+        appLists[i].appendChild(mainButton);*/
+        
+        if (gos.app.appList[ii].requireDebug == false) {
+          var mainButton = document.createElement("button");
+          var mainButton_DIV = document.createElement("div");
+          var mainButton_DIV_DIV = document.createElement("div");
+          var mainButton_DIV_H2 = document.createElement("h2");
+          var mainButton_DIV_p = document.createElement("p");
+          var mainButton_DIV_BUTTON = document.createElement("button");
+          var mainButton_DIV_BUTTON_IMG = document.createElement("img")
+
+          var appName = gos.app.appList[ii].name;
+          var appDescription = gos.app.appList[ii].description;
+
+          mainButton_DIV_H2.innerText = appName;
+          mainButton_DIV_p.innerText = appDescription;
+          mainButton.setAttribute("onclick", "if (gos.var.addAppToFav != true) {gos.functions.toggleTaskbarMenu(0); gos.app.functions.launchApp(gos.app.appList[" + ii + "]);} if (gos.var.addAppToFav) {gos.app.addAppToFav = false}");
+          if (gos.functions.checkAppOnFavList(gos.app.appList[ii])) {
+            mainButton_DIV_BUTTON.setAttribute("onmousedown", "gos.var.addAppToFav = true; gos.functions.removeAppFromFavList(gos.app.appList[" + ii + "]);");
+            mainButton_DIV_BUTTON_IMG.src = "./icons/icons8-heart-full-32.png";
+          } else {
+            mainButton_DIV_BUTTON.setAttribute("onmousedown", "gos.var.addAppToFav = true; gos.functions.addAppToFavList(gos.app.appList[" + ii + "]);");
+            mainButton_DIV_BUTTON_IMG.src = "./icons/icons8-heart-32.png";
+          }
+
+          mainButton_DIV_BUTTON.appendChild(mainButton_DIV_BUTTON_IMG);
+          mainButton_DIV.appendChild(mainButton_DIV_H2);
+          mainButton_DIV.appendChild(mainButton_DIV_DIV);
+          mainButton_DIV.appendChild(mainButton_DIV_p);
+          mainButton_DIV.appendChild(mainButton_DIV_BUTTON);
+          mainButton.appendChild(mainButton_DIV);
+          appLists[i].appendChild(mainButton);
+        } else {
+          var mainButton = document.createElement("button");
+          var mainButton_H2 = document.createElement("h2");
+          var mainButton_p = document.createElement("p");
+
+          var appName = gos.app.appList[ii].name;
+          var appDescription = gos.app.appList[ii].description;
+
+          mainButton_H2.innerText = appName;
+          mainButton_p.innerText = appDescription;
+          mainButton.setAttribute("onclick", "gos.functions.toggleTaskbarMenu(0); gos.app.functions.launchApp(gos.app.appList[" + ii + "]);")
+
+          mainButton.appendChild(mainButton_H2);
+          mainButton.appendChild(mainButton_p);
+          appLists[i].appendChild(mainButton);
+        }
+
       }
     }
   } else {
@@ -421,9 +471,8 @@ var gos = {
       console.log(appsFormated);
       for (var ii = 0; ii < appsFormated.length; ii++) {
 
-
         console.log("afd2")
-        var mainButton = document.createElement("button");
+        /*var mainButton = document.createElement("button");
         var mainButton_H2 = document.createElement("h2");
         var mainButton_p = document.createElement("p");
 
@@ -436,6 +485,39 @@ var gos = {
 
         mainButton.appendChild(mainButton_H2);
         mainButton.appendChild(mainButton_p);
+        appLists[i].appendChild(mainButton);*/
+
+        var mainButton = document.createElement("button");
+        var mainButton_DIV = document.createElement("div"); 
+        var mainButton_DIV_DIV = document.createElement("div");
+        var mainButton_DIV_H2 = document.createElement("h2");
+        var mainButton_DIV_p = document.createElement("p");
+        var mainButton_DIV_BUTTON = document.createElement("button");
+        var mainButton_DIV_BUTTON_IMG = document.createElement("img")
+
+        var appName = appsFormated[ii].name;
+        var appDescription = appsFormated[ii].description;
+
+        mainButton_DIV_H2.innerText = appName;
+        mainButton_DIV_p.innerText = appDescription;
+        mainButton.setAttribute("onclick", "if (gos.var.addAppToFav != true) {gos.functions.toggleTaskbarMenu(0); gos.app.functions.launchApp(gos.app.appList[" + appsNum[ii] + "]);} if (gos.var.addAppToFav) {gos.app.addAppToFav = false}");
+        // mainButton.setAttribute("onclick", "if (gos.var.addAppToFav != true) {gos.functions.toggleTaskbarMenu(0); gos.app.functions.launchApp(gos.app.appList[" + appsNum[ii] + "]);} ");
+        /*mainButton_DIV_BUTTON.setAttribute("onmousedown", "gos.var.addAppToFav = true; gos.functions.addAppToFavList(gos.app.appList[" + appsNum[ii] + "])");
+        mainButton_DIV_BUTTON_IMG.src = "./icons/icons8-heart-32.png";*/
+        if (gos.functions.checkAppOnFavList(gos.app.appList[appsNum[ii]])) {
+          mainButton_DIV_BUTTON.setAttribute("onmousedown", "gos.var.addAppToFav = true; gos.functions.removeAppFromFavList(gos.app.appList[" + appsNum[ii] + "]);");
+          mainButton_DIV_BUTTON_IMG.src = "./icons/icons8-heart-full-32.png";
+        } else {
+          mainButton_DIV_BUTTON.setAttribute("onmousedown", "gos.var.addAppToFav = true; gos.functions.addAppToFavList(gos.app.appList[" + appsNum[ii] + "]);");
+          mainButton_DIV_BUTTON_IMG.src = "./icons/icons8-heart-32.png";
+        }
+
+        mainButton_DIV_BUTTON.appendChild(mainButton_DIV_BUTTON_IMG);
+        mainButton_DIV.appendChild(mainButton_DIV_H2);
+        mainButton_DIV.appendChild(mainButton_DIV_DIV);
+        mainButton_DIV.appendChild(mainButton_DIV_p);
+        mainButton_DIV.appendChild(mainButton_DIV_BUTTON);
+        mainButton.appendChild(mainButton_DIV);
         appLists[i].appendChild(mainButton);
       }
     }
@@ -464,16 +546,17 @@ var gos = {
       appLists[i].appendChild(mainButton);
 
       for (var ii = 0; ii < gos.var.favouriteApps.length; ii++) {
+        if (gos.var.favouriteApps[ii] !== undefined) {
+          var mainButton = document.createElement("button");
+          var mainButton_H2 = document.createElement("h2");
+          var appName = gos.var.favouriteApps[ii].name;
 
-        var mainButton = document.createElement("button");
-        var mainButton_H2 = document.createElement("h2");
-        var appName = gos.var.favouriteApps[ii].name;
+          mainButton_H2.innerText = appName;
+          mainButton.setAttribute("onclick", "gos.functions.toggleTaskbarMenu(0); gos.app.functions.launchApp(gos.var.favouriteApps[" + ii + "]  );")
 
-        mainButton_H2.innerText = appName;
-        mainButton.setAttribute("onclick", "gos.functions.toggleTaskbarMenu(0); gos.app.functions.launchApp(gos.var.favouriteApps[" + ii + "]  );")
-
-        mainButton.appendChild(mainButton_H2);
-        appLists[i].appendChild(mainButton);
+          mainButton.appendChild(mainButton_H2);
+          appLists[i].appendChild(mainButton);
+        }
       }
     }
 
@@ -555,6 +638,44 @@ var gos = {
     for (var i = 0; i < elements.length; i++) {
       elements[i].innerHTML = "";
     }
+  },
+  addAppToFavList: function (appCode) {
+    gos.var.favouriteApps.push(appCode);
+    /*if (gos.var.addAppToFav) {
+      gos.var.addAppToFav = false;
+    }*/
+    // gos.functions.toggleStartMenuPage();
+    gos.functions.updateStartMenu();
+
+    var resetVar = setTimeout(function () { 
+      if (gos.var.addAppToFav) { 
+        gos.var.addAppToFav = false; 
+      }
+    }, 250)
+  },
+  checkAppOnFavList: function (appCode) {
+     var output = false;
+     for (var i = 0; i < gos.var.favouriteApps.length; i++) {
+       if (appCode === gos.var.favouriteApps[i]) {
+         output = true;
+       }
+     }
+     return output;
+  },
+  removeAppFromFavList: function (appCode) {
+    for (var i = 0; i < gos.var.favouriteApps.length; i++) {
+      if (appCode == gos.var.favouriteApps[i]) {
+        gos.var.favouriteApps[i] = undefined;
+      }
+    }
+    // gos.functions.toggleStartMenuPage();
+    gos.functions.updateStartMenu();
+
+    var resetVar = setTimeout(function () {
+      if (gos.var.addAppToFav) {
+        gos.var.addAppToFav = false;
+      }
+    }, 250)
   },
   updateIsOnMenu: function (code) {gos.var.isOnMenu = code},
   updateMenuState: function () {
@@ -812,7 +933,7 @@ var gos = {
   gos.functions.createWindow("GeorgeSystems Debugger Software", 600, 200, "<div id='gos_debug' style='background:#000;color:#fff;font-family:monospace;padding:4px;'>SUP I AM THE GORGEOSDEBUGSHIT</div></br><div style='background: white; padding: 10px;'><button class='gos_white'>Button #1</button></div></br><div style='background: black; padding: 10px;'><button >Button #2</button></div></br><button class='unstyled'>Button #3</button><button>HOLA MI NOMBRE ES VINCE CON SLAPCHOP. </button>", "#607d8b")
   gos.var.runtime = setInterval(this.runtime, 100);
 }, var:{
-  litsenForMenu: undefined, isOnMenu: undefined, mouse: { x: undefined, y: undefined }, menu: { minX: undefined, maxX: undefined, minY: undefined, maxY: undefined }, runtime: undefined, clock: undefined, clockFix: { hours: undefined, minutes: undefined, seconds: undefined }, windowTheme: "mac_os_x", windowThemeBlur: "blur_os_x", isLoggedIn: undefined, updaterLogin: undefined, animateCanvas: false, canvasAnimation: 0, startMenuPage: 0, recentApps: [], favouriteApps: [], autoLogin:true, notifList:[]
+  litsenForMenu: undefined, isOnMenu: undefined, mouse: { x: undefined, y: undefined }, menu: { minX: undefined, maxX: undefined, minY: undefined, maxY: undefined }, runtime: undefined, clock: undefined, clockFix: { hours: undefined, minutes: undefined, seconds: undefined }, windowTheme: "mac_os_x", windowThemeBlur: "blur_os_x", isLoggedIn: undefined, updaterLogin: undefined, animateCanvas: false, canvasAnimation: 0, startMenuPage: 0, recentApps: [], favouriteApps: [], autoLogin:true, notifList:[], addAppToFav:false,
 }}
 
 

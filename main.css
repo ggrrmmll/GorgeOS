@@ -399,11 +399,29 @@ input:active {
   height:21px;
 }
 
-.gos_list_appList > button > p, .gos_list_appList > button > h2 {
+.gos_list_appList > button > p, .gos_list_appList > button > h2, .gos_list_appList > button > div > p, .gos_list_appList > button > div > h2 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 12px;
+}
+
+.gos_list_appList > button > div {
+  display: grid;
+  grid-template-columns: auto 13px;
+  grid-template-rows: auto 14px;
+}
+
+.gos_list_appList > button > div > button {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: none;
+  background: none;
+}
+
+.gos_list_appList > button > div > button > img {
+  width:12px;
 }
 
 .gos_list_appList>button:hover{
@@ -547,6 +565,19 @@ input:active {
   height: 21px;
   overflow: hidden;
   width:100%;
+}
+
+.gos_dock_menuStartDiv_page0_mainList_appList > button {
+  margin:0;
+  margin-top: 2px;
+  font-size: 8px;
+  text-align: left;
+  padding-left: 10px;
+  font-weight: normal;
+}
+
+.gos_dock_menuStartDiv_page0_mainList_appList > button > h2 {
+  font-weight: normal;
 }
 
 .gos_dock_menuStartDiv_page0_mainList_appList>div:first-child {

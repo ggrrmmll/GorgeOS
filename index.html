@@ -35,10 +35,18 @@
   <canvas id="gos_desktop_wallpaper"></canvas>
   <div id="gos_login">
     <canvas class="gos_desktop_wallpaper_mirror"></canvas>
+    <div class="gos_login_loginUserListWrapper">
+      <div onclick="gos.functions.toggleLoginState();">
+        <img src="./icons/defaultUserImg.png">
+        <h2 class="gos_login_userName"></h2>
+      </div>
+    </div>
     <div class="gos_login_loginFormWrapper">
-      <div><img src="./icons/defaultUserImg.png"><h2 id="gos_login_userName">Administrator</h2></div>
+      <!--<div><img src="./icons/defaultUserImg.png"><h2 id="gos_login_userName">Administrator</h2></div>-->
+      <p>Login to <span class="gos_login_userName"></span></p>
       <p class="gos_login_passwordText">Password</p>
       <input type="password" id="gos_login_userNameInput">
+      <button onclick="gos.functions.toggleLoginState();" class="unstyled">CANCEL</button>
       <button onclick="gos.onLogin();" class="unstyled">LOGIN ></button>
     </div>
   </div>

@@ -297,20 +297,81 @@ button:not(.unstyled) {margin: 5px 0;}
   filter: blur(5px);
 }
 
+.gos_login_loginUserListWrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  transition: top 0.25s, filter 0.25s;
+}
+
+.gos_login_loginUserListWrapper > div {
+  display: inline-grid;
+  grid-template-columns: 130px;
+  overflow:hidden;
+  margin: 0 5px;
+}
+
+.gos_login_loginUserListWrapper > div > img {
+  /*width: calc(130px - 2px * 2);*/
+  width: 130px;
+  border-radius: 50%;
+  /*border: 2px solid #fff;*/
+  border: 0px solid #fff;
+  transition: border-width 0.15s,
+  width 0.15s;
+  box-shadow: 0 1px 5px #000;
+}
+
+.gos_login_loginUserListWrapper > div > h2 {
+  font-size: 13px;
+  text-align: center;
+  /*color: #eee;*/
+  /*text-shadow: 0 2px 2px #000;*/
+  color: transparent;
+  text-shadow: none;
+  transition: color 0.15s, text-shadow 0.15s;
+}
+
+.gos_login_loginUserListWrapper > div:hover > h2 {
+  color: #eee;
+  text-shadow: 0 2px 2px #000;
+}
+
+.gos_login_loginUserListWrapper > div:hover > img {
+  width: calc(130px - 2px * 2);
+  border: 2px solid #fff;
+}
+
+.gos_login_loginUserListWrapper_active {
+  top: calc(50% - 25px);
+  filter: blur(40px);
+}
+
+.gos_login_loginUserListWrapper_active > div > img {
+  width: calc(130px - 2px * 2);
+  border: 2px solid #fff;
+}
+
 .gos_login_loginFormWrapper {
   background: #fff;
   width: 300px;
-  height: 220px;
+  height: 95px;
   box-shadow: 0 0 5px #111;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
   position: absolute;
-  top: 50%;
+  /*top: calc(50% + 80px);*/
+  top: calc(100% + 100px);
   padding: 15px;
+  opacity: 0;
+  transition: top 0.15s, opacity 0.15s;
+  
 }
 
-.gos_login_loginFormWrapper > div > img {
+/*.gos_login_loginFormWrapper > div > img {
   width: 50px;
   height: 50px;
   display: inline-block;
@@ -322,7 +383,7 @@ button:not(.unstyled) {margin: 5px 0;}
   position: absolute;
   padding-top: 10px;
   padding-left: 10px;
-}
+}*/
 
 .gos_login_loginFormWrapper > button {
   position: absolute;
@@ -350,9 +411,23 @@ button:not(.unstyled) {margin: 5px 0;}
   color: #111;
 }
 
+.gos_login_loginFormWrapper > button:first-of-type {
+  left: 20px;
+}
+
 .gos_login_loginFormWrapper > p {
   font-size: 10px;
-  padding-top: 15px;
+}
+
+.gos_login_loginFormWrapper > p:first-of-type {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.gos_login_loginFormWrapper_active {
+  top: calc(50% + 60px);
+  opacity: 1;
+  display: block;
 }
 
 input {

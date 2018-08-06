@@ -677,6 +677,19 @@ var gos = {
       }
     }, 250)
   },
+  toggleLoginState: function () {
+    var elements = document.getElementsByClassName("gos_login_loginUserListWrapper");
+
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].classList.toggle("gos_login_loginUserListWrapper_active");
+    }
+
+    var elements = document.getElementsByClassName("gos_login_loginFormWrapper");
+
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].classList.toggle("gos_login_loginFormWrapper_active");
+    }
+  },
   updateIsOnMenu: function (code) {gos.var.isOnMenu = code},
   updateMenuState: function () {
     if (gos.var.litsenForMenu == true && gos.var.isOnMenu == false) {
@@ -824,7 +837,7 @@ var gos = {
       }  
     }, otherVariable)
     otherVariable = otherVariable + multiplyer;
-    console.log(otherVariable);
+    //console.log(otherVariable);
     //if (otherVariable == multiplyer * 100) {
     //  var x = document.getElementsByClassName("gos_boot");
     //  for (var i = 0; i < x.length; i++) {
@@ -858,11 +871,21 @@ var gos = {
     
   }, 100)
 
-  document.getElementById("gos_login_userName").innerHTML = gos.getVar("username");
+  //document.getElementById("gos_login_userName").innerHTML = gos.getVar("username");
 
+  var userName_textBoxes = document.getElementsByClassName("gos_login_userName");
+
+  for (var i = 0; i < userName_textBoxes.length; i++) {
+    userName_textBoxes[i].innerHTML = gos.getVar("username");
+  }
+
+  document.getElementById("gos_login_userNameInput").addEventListener("keyup", function (event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+      gos.onLogin();
+    }
+  });
   
-
-
   // Start canvas process
   gos.var.animateCanvas = true;
 
@@ -933,7 +956,7 @@ var gos = {
   gos.functions.createWindow("GeorgeSystems Debugger Software", 600, 200, "<div id='gos_debug' style='background:#000;color:#fff;font-family:monospace;padding:4px;'>SUP I AM THE GORGEOSDEBUGSHIT</div></br><div style='background: white; padding: 10px;'><button class='gos_white'>Button #1</button></div></br><div style='background: black; padding: 10px;'><button >Button #2</button></div></br><button class='unstyled'>Button #3</button><button>HOLA MI NOMBRE ES VINCE CON SLAPCHOP. </button>", "#607d8b")
   gos.var.runtime = setInterval(this.runtime, 100);
 }, var:{
-  litsenForMenu: undefined, isOnMenu: undefined, mouse: { x: undefined, y: undefined }, menu: { minX: undefined, maxX: undefined, minY: undefined, maxY: undefined }, runtime: undefined, clock: undefined, clockFix: { hours: undefined, minutes: undefined, seconds: undefined }, windowTheme: "mac_os_x", windowThemeBlur: "blur_os_x", isLoggedIn: undefined, updaterLogin: undefined, animateCanvas: false, canvasAnimation: 0, startMenuPage: 0, recentApps: [], favouriteApps: [], autoLogin:true, notifList:[], addAppToFav:false,
+  litsenForMenu: undefined, isOnMenu: undefined, mouse: { x: undefined, y: undefined }, menu: { minX: undefined, maxX: undefined, minY: undefined, maxY: undefined }, runtime: undefined, clock: undefined, clockFix: { hours: undefined, minutes: undefined, seconds: undefined }, windowTheme: "mac_os_x", windowThemeBlur: "blur_os_x", isLoggedIn: undefined, updaterLogin: undefined, animateCanvas: false, canvasAnimation: 0, startMenuPage: 0, recentApps: [], favouriteApps: [], autoLogin:false, notifList:[], addAppToFav:false,
 }}
 
 

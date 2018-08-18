@@ -1,0 +1,118 @@
+<style>
+ * {
+        margin:0;
+        padding:0;
+        font-family: monospace;
+    }
+
+ .navigator_controls {
+    width: calc(100% - 10px);
+    position:absolute;
+    top:1px;
+    padding: 2px 5px;
+    /*background:#f5f5f5;*/
+    background:transparent;
+    box-shadow: 0 2px 10px black; 
+    color: #eee; 
+    cursor: default;
+    display: grid;
+    grid-template-columns: 31px auto;
+ }
+
+ .navigator_controls > input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: calc(100% - 125px);
+    font-size: 17px;
+    color:#eee;
+ }
+
+ .navigator_controls > i {
+    margin-right: 1px;
+    padding:0 4px;
+    font-size: 20px;
+    display: inline-grid;
+ }
+
+ .navigator_controls > i:hover {
+    text-shadow: 0 1px 2px black;
+ }
+
+ .navigator_controls > i > img {
+    width: 18px;
+    filter: invert(100%);
+    padding:1px;
+ }
+
+ iframe {
+     width:100%;
+     height: calc(100% - 30px);
+     margin-top: 25px;
+ }
+</style>
+<iframe src="./homepage.html" id="navigator_iframe" frameborder="0" ></iframe>
+<div class="navigator_controls">
+    <i onclick="navigate('gweb://homepage')"><img src="./home-icon.png" alt="HOME"></i> <input id="navigator_textbox" onclick="this.select()" type="text">
+</div>
+<script>
+const httpMethode = "http://"
+
+function navigate(url) {
+    if (url !== undefined) {
+        //convert(url);
+        document.getElementById("navigator_iframe").contentWindow.location.replace(convert(url));
+    }
+}
+
+function convert(url) {
+    var returnUrl;
+    if (url.indexOf(' ') > -1 || url.indexOf('.') < 0) {
+        if (url == "gweb://homepage") {
+            returnUrl = "./homepage.html";
+        } else {
+            returnUrl = httpMethode + 'www.bing.com/search?q=' + encodeURI(url);
+        }
+    } /*else if (url == "gweb://homepage") {
+        returnUrl = "./homepage.html";
+    }*/ else {
+        if (url.indexOf("www.") < 0) {
+            url = "www." + url;
+        }
+        if (url.indexOf(httpMethode) < 0) {
+            url = httpMethode + url;
+        }
+        returnUrl = url;
+    }
+    if (url == "gweb://homepage") {
+        document.getElementById("navigator_textbox").value = "gweb://homepage";
+    } else {
+        document.getElementById("navigator_textbox").value = returnUrl;
+    }
+    return returnUrl;
+}
+
+function clearSelection() {
+    if (window.getSelection) { 
+        window.getSelection().removeAllRanges(); 
+    } else if (document.selection) { 
+        document.selection.empty(); 
+    }
+}
+
+window.onload = function () {
+    document.getElementById("navigator_textbox").value = "gweb://homepage";
+    document.getElementById("navigator_textbox").addEventListener("keyup", function (event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+            clearSelection()
+            navigate(document.getElementById("navigator_textbox").value);
+        }
+    });
+}
+
+window.onmessage = function(e){
+    navigate(e.data);
+};
+</script>
+

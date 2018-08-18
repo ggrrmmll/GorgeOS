@@ -34,12 +34,12 @@ var gos = {
           height: 150,
           backgroundColor: "#000"
         }
-      }, {
+    }, /*{
         name: 'Gorge OS Test Application',
         description: 'Gorge OS Debugger Application',
         command: 'debug',
         openWindow: true,
-        requireDebug: false,
+        requireDebug: true,
         onRun: function () {
           console.log("Program initalized")
         },
@@ -51,7 +51,7 @@ var gos = {
           height: 150,
           backgroundColor: "#000"
         }
-      }, {
+      },*/ {
         name: 'Gorge OS Command Line Test Application',
         description: 'This tests the command line',
         command: 'cmdtest',
@@ -65,6 +65,40 @@ var gos = {
 
           // gos.functions.cliPrntTxt("Text", cliField)
           // Write "Text" to the CLI field in a new line
+        }
+      }, {
+        name: 'Gorge OS GUI Test',
+        description: "Test Gorge OS's GUI.",
+        command: 'gosinterfacetest',
+        openWindow: true,
+        requireDebug: true,
+        onRun: function () {
+          
+        },
+        win: {
+          title: 'Debugger',
+          inner: "<div id='gos_debug' style='background:#000;color:#fff;font-family:monospace;padding:4px;'>SUP I AM THE GORGEOSDEBUGSHIT</div></br><div style='background: white; padding: 10px;'><button class='gos_white'>Button #1</button></div></br><div style='background: black; padding: 10px;'><button >Button #2</button></div></br><button class='unstyled'>Button #3</button><button>HOLA MI NOMBRE ES VINCE CON SLAPCHOP. </button>",
+          onWindowStart: function () {  },
+          width: 500,
+          height: 250,
+          backgroundColor: "lightblue"
+        }
+      }, {
+        name: 'GWeb Web Explorer',
+        description: "Navigate to any supported website.",
+        command: 'gweb',
+        openWindow: true,
+        requireDebug: false,
+        onRun: function () {
+
+        },
+        win: {
+          title: 'GWeb Explorer',
+          inner: "<iframe src='./app/gweb/navigator.html' style='height:100%; width:100%;' frameborder='0'></iframe>",
+          onWindowStart: function () { },
+          width: 1000,
+          height: 800,
+          backgroundColor: "#525252"
         }
       }],
       functions:{
@@ -952,10 +986,25 @@ var gos = {
 }, onDesktopLoad: function () {
   
   
-  gos.functions.createWindow("Nuggers r gonna fuck up.", 200, 150, "<div class='gos_windows_terminal'><div>Some text ovah</div><div class='gos_windows_terminal_blankSpace'></div> </div>", "#000")
-  gos.functions.createWindow("GeorgeSystems Debugger Software", 600, 200, "<div id='gos_debug' style='background:#000;color:#fff;font-family:monospace;padding:4px;'>SUP I AM THE GORGEOSDEBUGSHIT</div></br><div style='background: white; padding: 10px;'><button class='gos_white'>Button #1</button></div></br><div style='background: black; padding: 10px;'><button >Button #2</button></div></br><button class='unstyled'>Button #3</button><button>HOLA MI NOMBRE ES VINCE CON SLAPCHOP. </button>", "#607d8b")
+  //gos.functions.createWindow("Nuggers r gonna fuck up.", 200, 150, "<div class='gos_windows_terminal'><div>Some text ovah</div><div class='gos_windows_terminal_blankSpace'></div> </div>", "#000")
+  //gos.functions.createWindow("GeorgeSystems Debugger Software", 600, 200, "<div id='gos_debug' style='background:#000;color:#fff;font-family:monospace;padding:4px;'>SUP I AM THE GORGEOSDEBUGSHIT</div></br><div style='background: white; padding: 10px;'><button class='gos_white'>Button #1</button></div></br><div style='background: black; padding: 10px;'><button >Button #2</button></div></br><button class='unstyled'>Button #3</button><button>HOLA MI NOMBRE ES VINCE CON SLAPCHOP. </button>", "#607d8b")
   gos.var.runtime = setInterval(this.runtime, 100);
-}, var:{
+}, /*paket:{
+  functions:{
+    install: function (paket) {
+
+    },
+    verify: function (paket) {
+
+    },
+    reload: function () {
+
+    },
+    add: function (paketNum, target) {
+      
+    }
+  }, expansionList:[]
+},*/ var:{
   litsenForMenu: undefined, isOnMenu: undefined, mouse: { x: undefined, y: undefined }, menu: { minX: undefined, maxX: undefined, minY: undefined, maxY: undefined }, runtime: undefined, clock: undefined, clockFix: { hours: undefined, minutes: undefined, seconds: undefined }, windowTheme: "mac_os_x", windowThemeBlur: "blur_os_x", isLoggedIn: undefined, updaterLogin: undefined, animateCanvas: false, canvasAnimation: 0, startMenuPage: 0, recentApps: [], favouriteApps: [], autoLogin:false, notifList:[], addAppToFav:false,
 }}
 

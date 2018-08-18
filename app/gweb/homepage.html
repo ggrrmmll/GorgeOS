@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GWeb Start Page</title>
+    <style>
+        * {
+            margin:0;
+            padding:0;
+        }
+        body > div {
+            position: absolute;
+            top: calc(50% - 40px);
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+        }
+        body > div > div {
+            display: grid;
+            grid-template-rows: 315px 20px ;
+        }
+        body > div > div > div > input {
+            border: none;
+            outline: none;
+            background: transparent;
+            color: #eaeaea;
+            padding: 5px;
+            width: 100%;
+            border-bottom: 1px solid #eaeaea;
+            text-shadow: 0 0 5px #000;
+            font-family: monospace;
+        }
+        body > div > div > div > input::placeholder {
+            color: #d3d3d3;
+        }
+        body > footer {
+            position: absolute;
+            bottom: 0;
+            padding: 10px;
+            text-align: center;
+            width: calc(100% - 20px);
+            font-family: monospace;
+            color: #eaeaea;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div>
+            <img src="./gweb_logo.png" alt="GWeb Logo">
+            <div>
+                <input type="text" id="gweb_home_searchBox" placeholder="Search or type URL...">
+            </div>
+        </div>
+    </div>
+    <footer>GWEB HOMEPAGE</footer>
+    <script>
+        window.onload = function () {
+            document.getElementById("gweb_home_searchBox").value = "";
+            document.getElementById("gweb_home_searchBox").addEventListener("keyup", function (event) {
+                event.preventDefault();
+                if (event.keyCode === 13) {
+                    window.parent.postMessage(document.getElementById("gweb_home_searchBox").value, "*");
+                }
+            });
+        }
+    </script>
+</body>
+</html>

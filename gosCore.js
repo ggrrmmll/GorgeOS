@@ -1,4 +1,4 @@
-var gos = {
+const gos = {
   version: 0.1, codeName: "beta", debug: true, app: {
     appList: [{
         name: 'Gorge OS Test Application',

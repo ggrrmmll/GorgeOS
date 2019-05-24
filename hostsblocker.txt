@@ -20,6 +20,7 @@
 #	127.0.0.1       localhost
 #	::1             localhost
 127.0.0.1 pornhub.com
+127.0.0.1 xvideos.com
 127.0.0.1 hentaimama.com
 127.0.0.1 hentaihaven.org
 127.0.0.1 rule34.paheal.com
